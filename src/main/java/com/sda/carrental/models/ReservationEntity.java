@@ -23,7 +23,7 @@ public class ReservationEntity {
     private Date end_date;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="costumer_id", nullable = false)
-    private CostumerEntity costumerEntity;
+    private CustomerEntity costumerEntity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="car_id", nullable = false)

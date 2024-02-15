@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @jakarta.persistence.Entity
-public class CostumerEntity {
+public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @jakarta.persistence.Column(name="costumer_id")  //
