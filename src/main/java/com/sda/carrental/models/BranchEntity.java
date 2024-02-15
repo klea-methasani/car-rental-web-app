@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Table(name="branch")
@@ -28,5 +30,8 @@ public class BranchEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rental_id", nullable = false)
     private RentalEntity rentalEntity; // e deklarojme si obj
+
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
+    private List<RevenueEntity> revenueEntities;
 
 }
