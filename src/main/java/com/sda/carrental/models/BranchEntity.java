@@ -2,7 +2,6 @@ package com.sda.carrental.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
 
 @Getter
