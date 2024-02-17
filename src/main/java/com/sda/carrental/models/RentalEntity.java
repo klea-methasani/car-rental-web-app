@@ -1,25 +1,24 @@
 package com.sda.carrental.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
-@Table(name="rental")
+@Table(name="rentals")
 @NoArgsConstructor
 @AllArgsConstructor
-@jakarta.persistence.Entity  // librari e cila ben lidhjen me SQL
-
+@Data
+@jakarta.persistence.Entity
 public class RentalEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Column(name="rental_id")  //eshte kompania qe do te kete deget e ndryshme
+    @jakarta.persistence.Column(name="rental_id")
     private Integer rental_id;
+
     @Column(name="name")
     private String name;
 
