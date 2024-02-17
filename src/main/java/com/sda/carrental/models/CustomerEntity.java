@@ -2,10 +2,7 @@ package com.sda.carrental.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
 @Table(name="costumer")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @jakarta.persistence.Entity
 public class CustomerEntity {
     @Id

@@ -1,10 +1,7 @@
 package com.sda.carrental.models;
 import com.sda.carrental.models.enums.Status;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
 @Table(name="car")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @jakarta.persistence.Entity
 public class CarEntity {
     @Id
