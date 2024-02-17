@@ -2,6 +2,7 @@ package com.sda.carrental.controller;
 
 import com.sda.carrental.models.RentalEntity;
 import com.sda.carrental.service.serviceImpl.RentalServiceImpl;
+import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class RentalController {
         return new ResponseEntity<>(createRental, HttpStatus.CREATED);
     }
 
-    @GetMapping("/getRentalById/{id}")
+    @GetMapping("/getRentalById/{rentalId}")
     public ResponseEntity<Optional<RentalEntity>> getRentalsById(@PathVariable Integer rentalId){
         Optional<RentalEntity> getRental = rentalService.getRental(rentalId);
         return new ResponseEntity<>(getRental, HttpStatus.OK);

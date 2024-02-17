@@ -1,6 +1,7 @@
 package com.sda.carrental.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class RentalEntity {
     private String name;
 
     @Column(name="email")
+    @Email(message = "This email is not valid")
     private String email;
 
     @Column(name="owner")
@@ -31,7 +33,5 @@ public class RentalEntity {
     //po behet lidhja one to many(nje rental company ka disa branche)
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "rentalEntity")
     private List<BranchEntity> branchEntities;
-
-
 
 }

@@ -1,5 +1,6 @@
 package com.sda.carrental.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,8 +25,9 @@ public class BranchEntity {
     @Column(name="city")
     private String city;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="rental_id", nullable = false)
+    @JoinColumn(name="rental_id")
     private RentalEntity rentalEntity;
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")

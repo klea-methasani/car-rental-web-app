@@ -1,4 +1,5 @@
 package com.sda.carrental.models;
+import com.sda.carrental.models.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,8 +31,9 @@ public class CarEntity {
     @Column(name="color")
     private String color;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="status")
-    private String status;
+    private Status status;
 
     @Column(name="rental_per_day")
     private Integer rental_per_day;

@@ -12,4 +12,5 @@ public interface BranchServiceInterface {
     BranchEntity updateBranch(BranchEntity branch, Integer branchId);
 
     void deleteBranch(Integer branchId);
+
 }
