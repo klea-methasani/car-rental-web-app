@@ -19,25 +19,25 @@ public class RentalController {
     private RentalServiceImpl rentalService;
 
     @PostMapping("/createRentals")
-    public ResponseEntity<RentalEntity> createRental(@RequestBody RentalEntity rental){
+    public ResponseEntity<RentalEntity> createRentals(@RequestBody RentalEntity rental){
         RentalEntity createRental = rentalService.createRental(rental);
         return new ResponseEntity<>(createRental, HttpStatus.CREATED);
     }
 
     @GetMapping("/getRentalById/{id}")
-    public ResponseEntity<Optional<RentalEntity>> getRentalById(@PathVariable Integer rentalId){
+    public ResponseEntity<Optional<RentalEntity>> getRentalsById(@PathVariable Integer rentalId){
         Optional<RentalEntity> getRental = rentalService.getRental(rentalId);
         return new ResponseEntity<>(getRental, HttpStatus.OK);
     }
 
     @PutMapping("/updateRentals/{id}")
-    public ResponseEntity<RentalEntity> updateRental(@RequestBody RentalEntity rental, @PathVariable Integer rentalId){
+    public ResponseEntity<RentalEntity> updateRentals(@RequestBody RentalEntity rental, @PathVariable Integer rentalId){
         RentalEntity updateRental = rentalService.updateRental(rental,rentalId);
         return new ResponseEntity<>(updateRental, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteRentals/{id}")
-    public ResponseEntity<Void> deleteRental(Integer branchId){
+    public ResponseEntity<Void> deleteRentals(Integer branchId){
         rentalService.deleteRental(branchId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
