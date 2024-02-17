@@ -1,4 +1,5 @@
 package com.sda.carrental.models;
+import com.sda.carrental.models.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,18 +17,25 @@ import java.util.List;
 public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Column(name="car_id")  //
+    @jakarta.persistence.Column(name="car_id")
     private Integer car_id;
+
     @Column(name="brand")
     private String brand;
+
     @Column(name="model")
     private String model;
+
     @Column(name="year")
     private Integer year;
+
     @Column(name="color")
     private String color;
+
+    @Enumerated(EnumType.STRING)
     @Column(name="status")
-    private String status;
+    private Status status;
+
     @Column(name="rental_per_day")
     private Integer rental_per_day;
 

@@ -1,6 +1,7 @@
 package com.sda.carrental.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,17 @@ public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @jakarta.persistence.Column(name="costumer_id")  //
     private Integer costumer_id;
+
     @Column(name="first_name")
-    private String first_name;
+    private String firstName;
+
     @Column(name="last_name")
-    private String last_name;
+    private String lastName;
+
     @Column(name="email")
+    @Email(message = "This email is not valid")
     private String email;
+
     @Column(name="address")
     private String address;
 
