@@ -31,15 +31,15 @@ public class RentalController {
         return new ResponseEntity<>(getRental, HttpStatus.OK);
     }
 
-    @PutMapping("/updateRentals/{id}")
+    @PutMapping("/updateRentals/{rentalId}")
     public ResponseEntity<RentalEntity> updateRentals(@RequestBody RentalEntity rental, @PathVariable Integer rentalId){
         RentalEntity updateRental = rentalService.updateRental(rental,rentalId);
         return new ResponseEntity<>(updateRental, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteRentals/{id}")
-    public ResponseEntity<Void> deleteRentals(Integer branchId){
-        rentalService.deleteRental(branchId);
+    public ResponseEntity<Void> deleteRentals(@PathVariable Integer id){
+        rentalService.deleteRental(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
