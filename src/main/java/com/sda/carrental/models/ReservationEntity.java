@@ -26,7 +26,7 @@ public class ReservationEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="costumer_id", nullable = false)
-    private CustomerEntity costumerEntity;
+    private CustomerEntity customerEntity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="car_id", nullable = false)

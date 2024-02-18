@@ -6,7 +6,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Table(name="costumers")
+@Table(name="customer")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -30,7 +30,7 @@ public class CustomerEntity {
     @Column(name="address")
     private String address;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "costumerEntity")
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "customerEntity")
     private List<ReservationEntity> reservationEntities;
 
     @ManyToOne
