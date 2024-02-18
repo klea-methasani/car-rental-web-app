@@ -14,6 +14,7 @@ import java.util.List;
 @Data
 @jakarta.persistence.Entity
 public class BranchEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @jakarta.persistence.Column(name="branch_id")  //
@@ -32,5 +33,8 @@ public class BranchEntity {
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
     private List<RevenueEntity> revenueEntities;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branch")
+    private List<CustomerEntity> customerEntities;
 
 }

@@ -1,6 +1,5 @@
 package com.sda.carrental.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -33,5 +32,9 @@ public class CustomerEntity {
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "costumerEntity")
     private List<ReservationEntity> reservationEntities;
+
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private BranchEntity branch;
 
 }
