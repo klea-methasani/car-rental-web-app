@@ -1,29 +1,30 @@
 package com.sda.carrental.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Email;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
-@Table(name="rental")
+@Table(name="rentals")
 @NoArgsConstructor
 @AllArgsConstructor
-@jakarta.persistence.Entity  // librari e cila ben lidhjen me SQL
-
+@Data
+@jakarta.persistence.Entity
 public class RentalEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Column(name="rental_id")  //eshte kompania qe do te kete deget e ndryshme
+    @jakarta.persistence.Column(name="rental_id")
     private Integer rental_id;
+
     @Column(name="name")
     private String name;
 
     @Column(name="email")
+    @Email(message = "This email is not valid")
     private String email;
 
     @Column(name="owner")
@@ -32,7 +33,5 @@ public class RentalEntity {
     //po behet lidhja one to many(nje rental company ka disa branche)
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "rentalEntity")
     private List<BranchEntity> branchEntities;
-
-
 
 }
