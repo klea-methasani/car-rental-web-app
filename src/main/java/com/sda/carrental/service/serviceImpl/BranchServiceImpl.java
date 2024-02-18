@@ -17,7 +17,6 @@ public class BranchServiceImpl implements BranchServiceInterface {
 
     @Override
     public BranchEntity createBranch(BranchEntity branch) {
-        branch.setCustomerEntities(branch.getCustomerEntities());
         branch.setRentalEntity(branch.getRentalEntity());
         return branchRepository.save(branch);
     }
