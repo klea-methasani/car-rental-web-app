@@ -1,6 +1,6 @@
 package com.sda.carrental.models.enums;
 
-public enum Status {
+public enum CarStatus {
     BOOKED,
     AVAILABLE,
     UNAVAILABLE
