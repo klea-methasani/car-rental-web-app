@@ -4,10 +4,13 @@ import com.sda.carrental.exceptions.BranchNotFoundException;
 import com.sda.carrental.exceptions.CustomerNotFoundException;
 import com.sda.carrental.models.BranchEntity;
 import com.sda.carrental.models.CustomerEntity;
+import com.sda.carrental.repository.BranchRepository;
 import com.sda.carrental.repository.CustomerRepository;
+import com.sda.carrental.service.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +19,9 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    BranchRepository branchRepository;
 
     @Override
     public CustomerEntity createCustomer(CustomerEntity customer) {
@@ -33,6 +39,7 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
         customerRepository.deleteById(customerId);
     }
 
+
     @Override
     public CustomerEntity updateCustomer(CustomerEntity customer, Integer customerId) {
         if (!customerRepository.existsById(customerId)) {
@@ -42,11 +49,16 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
         customerEntity.get().setAddress(customer.getAddress());
         customerEntity.get().setEmail(customer.getEmail());
-        customerEntity.get().setFirst_name(customer.getFirst_name());
-        customerEntity.get().setLast_name(customer.getLast_name());
+        customerEntity.get().setFirstName(customer.getFirstName());
+        customerEntity.get().setLastName(customer.getLastName());
 
         return customerRepository.save(customerEntity.get());
     }
 
+    @Override
+    public List<CustomerEntity> getCustomersByBranchId(Integer branchId) {
+        return branchRepository.findById(branchId).map(BranchEntity::getCustomerEntities).
+                orElseThrow(() -> new BranchNotFoundException("Branch not found"));
+    }
 
 }

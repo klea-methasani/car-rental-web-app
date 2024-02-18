@@ -2,12 +2,16 @@ package com.sda.carrental.service.serviceImpl;
 
 import com.sda.carrental.exceptions.BranchNotFoundException;
 import com.sda.carrental.models.BranchEntity;
+import com.sda.carrental.models.CustomerEntity;
 import com.sda.carrental.repository.BranchRepository;
 import com.sda.carrental.service.BranchServiceInterface;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class BranchServiceImpl implements BranchServiceInterface {
@@ -42,6 +46,6 @@ public class BranchServiceImpl implements BranchServiceInterface {
     @Override
     public void deleteBranch(Integer branchId) {
         branchRepository.deleteById(branchId);
-
     }
+
 }
