@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -38,6 +39,12 @@ public class CustomerController {
     public ResponseEntity<Void> deleteCustomer(@PathVariable Integer customerId){
         customerService.deleteCustomer(customerId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getCustomerByBranchId/{branchId}")
+    public ResponseEntity<List<CustomerEntity>> getCustomerByBranchId(@PathVariable Integer branchId){
+        List<CustomerEntity> getCostumerByBranchId = customerService.getCustomersByBranchId(branchId);
+        return new ResponseEntity<>(getCostumerByBranchId, HttpStatus.OK);
     }
 
 }

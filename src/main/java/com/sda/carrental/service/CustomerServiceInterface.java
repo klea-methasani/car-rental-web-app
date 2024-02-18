@@ -1,7 +1,8 @@
-package com.sda.carrental.service.serviceImpl;
+package com.sda.carrental.service;
 
 import com.sda.carrental.models.CustomerEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CustomerServiceInterface {
@@ -12,4 +13,6 @@ public interface CustomerServiceInterface {
     CustomerEntity updateCustomer(CustomerEntity customer , Integer customerId);
 
     void deleteCustomer(Integer customerId);
+
+    List<CustomerEntity> getCustomersByBranchId(Integer branchId);
 }
