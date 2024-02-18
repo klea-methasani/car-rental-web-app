@@ -10,14 +10,14 @@ import java.util.List;
 
 @Getter
 @Setter
-@Table(name="costumer")
+@Table(name="customer")
 @NoArgsConstructor
 @AllArgsConstructor
 @jakarta.persistence.Entity
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Column(name="costumer_id")  //
+    @jakarta.persistence.Column(name="customer_id")  //
     private Integer costumer_id;
     @Column(name="first_name")
     private String first_name;
@@ -28,7 +28,7 @@ public class CustomerEntity {
     @Column(name="address")
     private String address;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "costumerEntity")
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "customerEntity")
     private List<ReservationEntity> reservationEntities;
 
 }
