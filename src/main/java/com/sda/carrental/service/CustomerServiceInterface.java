@@ -15,4 +15,6 @@ public interface CustomerServiceInterface {
     void deleteCustomer(Integer customerId);
 
     List<CustomerEntity> getCustomersByBranchId(Integer branchId);
+
+    List<CustomerEntity> getAllCustomersByRentalId(Integer rentalId);
 }

@@ -34,4 +34,7 @@ public class RentalEntity {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "rentalEntity")
     private List<BranchEntity> branchEntities;
 
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "rentalEntity")
+    private List<CustomerEntity> customerEntities;
+
 }

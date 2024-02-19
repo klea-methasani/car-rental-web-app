@@ -17,6 +17,7 @@ import java.util.Optional;
 @RequestMapping("/api/customers")
 @AllArgsConstructor
 public class CustomerController {
+
     @Autowired
     private CustomerServiceImpl customerService;
 
@@ -45,6 +46,12 @@ public class CustomerController {
     public ResponseEntity<List<CustomerEntity>> getCustomerByBranchId(@PathVariable Integer branchId){
         List<CustomerEntity> getCostumerByBranchId = customerService.getCustomersByBranchId(branchId);
         return new ResponseEntity<>(getCostumerByBranchId, HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllCustomersByRentalId/{rentalId}")
+    public ResponseEntity<List<CustomerEntity>> getAllCustomersByRentalId(@PathVariable Integer rentalId){
+        List<CustomerEntity> getCostumerByRental = customerService.getAllCustomersByRentalId(rentalId);
+        return new ResponseEntity<>(getCostumerByRental, HttpStatus.OK);
     }
 
 }

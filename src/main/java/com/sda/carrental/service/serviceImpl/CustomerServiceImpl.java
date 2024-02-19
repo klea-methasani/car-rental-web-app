@@ -2,10 +2,13 @@ package com.sda.carrental.service.serviceImpl;
 
 import com.sda.carrental.exceptions.BranchNotFoundException;
 import com.sda.carrental.exceptions.CustomerNotFoundException;
+import com.sda.carrental.exceptions.RentalNotFoundException;
 import com.sda.carrental.models.BranchEntity;
 import com.sda.carrental.models.CustomerEntity;
+import com.sda.carrental.models.RentalEntity;
 import com.sda.carrental.repository.BranchRepository;
 import com.sda.carrental.repository.CustomerRepository;
+import com.sda.carrental.repository.RentalRepository;
 import com.sda.carrental.service.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,9 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
     @Autowired
     BranchRepository branchRepository;
+
+    @Autowired
+    RentalRepository rentalRepository;
 
     @Override
     public CustomerEntity createCustomer(CustomerEntity customer) {
@@ -57,8 +63,13 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
     @Override
     public List<CustomerEntity> getCustomersByBranchId(Integer branchId) {
-        return branchRepository.findById(branchId).map(BranchEntity::getCustomerEntities).
-                orElseThrow(() -> new BranchNotFoundException("Branch not found"));
+        return branchRepository.findById(branchId).map(BranchEntity::getCustomerEntities)
+                .orElseThrow(() -> new BranchNotFoundException("Branch not found"));
+    }
+    @Override
+    public List<CustomerEntity> getAllCustomersByRentalId(Integer rentalId) {
+        return rentalRepository.findById(rentalId).map(RentalEntity::getCustomerEntities)
+                .orElseThrow(() -> new RentalNotFoundException("Rental not found"));
     }
 
 }

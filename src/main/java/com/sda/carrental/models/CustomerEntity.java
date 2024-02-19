@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Table(name="customer")
+@Table(name="customers")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -38,5 +38,10 @@ public class CustomerEntity {
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private BranchEntity branch;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "rental_id")
+    private RentalEntity rentalEntity;
 
 }
