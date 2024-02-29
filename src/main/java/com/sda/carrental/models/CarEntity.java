@@ -1,5 +1,6 @@
 package com.sda.carrental.models;
 import com.sda.carrental.models.enums.CarStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,4 +41,9 @@ public class CarEntity {
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "carEntity")
     private List<ReservationEntity> reservationEntities;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="branch_id")
+    private BranchEntity branchEntity;
 }

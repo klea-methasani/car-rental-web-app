@@ -17,4 +17,5 @@ public interface CustomerServiceInterface {
     List<CustomerEntity> getCustomersByBranchId(Integer branchId);
 
     List<CustomerEntity> getAllCustomersByRentalId(Integer rentalId);
+
 }

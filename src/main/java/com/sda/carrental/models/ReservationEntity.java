@@ -23,7 +23,7 @@ public class ReservationEntity {
     private Date start_date;
 
     private Date end_date;
-
+ private double amount;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="costumer_id", nullable = false)
     private CustomerEntity customerEntity;

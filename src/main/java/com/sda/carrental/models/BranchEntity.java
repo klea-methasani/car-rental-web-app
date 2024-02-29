@@ -34,7 +34,9 @@ public class BranchEntity {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
     private List<RevenueEntity> revenueEntities;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branch")
-    private List<CustomerEntity> customerEntities;
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
+    private List<CarEntity> carEntities;
 
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
+    private List<CustomerEntity> customerEntities;
 }

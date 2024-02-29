@@ -1,6 +1,8 @@
 package com.sda.carrental.service;
 
 import com.sda.carrental.models.BranchEntity;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface BranchServiceInterface {
@@ -13,4 +15,5 @@ public interface BranchServiceInterface {
 
     void deleteBranch(Integer branchId);
 
+    public List<BranchEntity> getBranchByRentalId(Integer rentalId);
 }
