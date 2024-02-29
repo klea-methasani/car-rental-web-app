@@ -24,12 +24,13 @@ public class CarServiceImpl implements CarServiceInterface {
 
     @Override
     public CarEntity createCar(CarEntity car) {
+        car.setBranchEntity(car.getBranchEntity());
         return carRepository.save(car);
     }
 
     @Override
     public Optional<CarEntity> getCar(Integer carId) {
-        return Optional.of(carRepository.findById(carId)).orElseThrow(() -> new CustomerNotFoundException("Car not found with this :" + carId));
+        return Optional.of(carRepository.findById(carId)).orElseThrow(() -> new EntityNotFoundException("Car not found with this :" + carId));
 
     }
 
