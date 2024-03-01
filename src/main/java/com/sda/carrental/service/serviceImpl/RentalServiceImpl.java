@@ -35,6 +35,8 @@ public class RentalServiceImpl implements RentalServiceInterface {
         }
         Optional<RentalEntity> rentalEntity = rentalRepository.findById(rentalId);
         rentalEntity.get().setName(rental.getName());
+        rentalEntity.get().setOwner(rental.getOwner());
+        rentalEntity.get().setEmail(rental.getEmail());
         return rentalRepository.save(rentalEntity.get());
     }
 
