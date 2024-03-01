@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -41,4 +42,11 @@ public class RentalController {
         rentalService.deleteRental(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/getAllRentals")
+    public ResponseEntity<List<RentalEntity>> getAllRentals(){
+        List<RentalEntity> getAllRentals = rentalService.getAllRentals();
+        return new ResponseEntity<>(getAllRentals, HttpStatus.OK);
+    }
+
 }

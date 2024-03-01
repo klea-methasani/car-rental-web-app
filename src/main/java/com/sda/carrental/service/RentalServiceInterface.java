@@ -2,6 +2,7 @@ package com.sda.carrental.service;
 
 import com.sda.carrental.models.RentalEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface RentalServiceInterface {
@@ -13,4 +14,6 @@ public interface RentalServiceInterface {
     RentalEntity updateRental(RentalEntity rental, Integer rentalId);
 
     void deleteRental(Integer rentalId);
+
+    List<RentalEntity> getAllRentals();
 }
