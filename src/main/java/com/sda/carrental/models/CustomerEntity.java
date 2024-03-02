@@ -34,12 +34,12 @@ public class CustomerEntity {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "customerEntity")
     private List<ReservationEntity> reservationEntities;
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rental_id")
     private RentalEntity rentalEntity;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name="branch_id")
     private BranchEntity branchEntity;
 }

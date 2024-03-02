@@ -44,9 +44,9 @@ public class BranchController {
         return new ResponseEntity<>(updateBranch, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteBranches/{id}")
-    public ResponseEntity<Void> deleteBranches(@PathVariable Integer id) {
-        branchService.deleteBranch(id);
+    @DeleteMapping("/deleteBranches/{branchId}")
+    public ResponseEntity<Void> deleteBranches(@PathVariable Integer branchId) {
+        branchService.deleteBranch(branchId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

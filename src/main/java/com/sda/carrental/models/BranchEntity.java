@@ -17,7 +17,7 @@ public class BranchEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @jakarta.persistence.Column(name="branch_id")  //
+    @jakarta.persistence.Column(name="branch_id")
     private Integer branch_id;
 
     @Column(name="address")
@@ -27,8 +27,9 @@ public class BranchEntity {
     private String city;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name="rental_id")
+
     private RentalEntity rentalEntity;
 
     @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")

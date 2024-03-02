@@ -4,9 +4,13 @@ import com.sda.carrental.exceptions.BranchNotFoundException;
 import com.sda.carrental.models.BranchEntity;
 import com.sda.carrental.models.RentalEntity;
 import com.sda.carrental.repository.BranchRepository;
+import com.sda.carrental.repository.CarRepository;
 import com.sda.carrental.repository.RentalRepository;
 import com.sda.carrental.service.BranchServiceInterface;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +23,8 @@ public class BranchServiceImpl implements BranchServiceInterface {
     @Autowired
     BranchRepository branchRepository;
 
+    @Autowired
+    CarRepository carRepository;
     @Autowired
     RentalRepository rentalRepository;
 
