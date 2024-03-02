@@ -47,7 +47,7 @@ public class CarEntity {
     @JoinColumn(name="branch_id")
     private BranchEntity branchEntity;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;
 }

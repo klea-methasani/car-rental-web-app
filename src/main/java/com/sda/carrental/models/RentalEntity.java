@@ -41,7 +41,6 @@ public class RentalEntity {
     @Column(name = "owner")
     private String owner;
 
-    //po behet lidhja one to many(nje rental company ka disa branche)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "rentalEntity")
     private List<BranchEntity> branchEntities;
 
