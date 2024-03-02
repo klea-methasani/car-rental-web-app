@@ -15,6 +15,7 @@ import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -83,4 +84,7 @@ public class ReservationServiceImpl implements ReservationServiceInterface {
     public void deleteReservation(Integer reservationId) {
         reservationRepository.deleteById(reservationId);
     }
+
+    @Override
+    public List<ReservationEntity> getAllReservation() {return reservationRepository.findAll();    }
 }

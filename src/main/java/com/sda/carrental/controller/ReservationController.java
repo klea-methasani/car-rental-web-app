@@ -1,6 +1,7 @@
 package com.sda.carrental.controller;
 
 
+import com.sda.carrental.models.RentalEntity;
 import com.sda.carrental.models.ReservationEntity;
 import com.sda.carrental.service.serviceImpl.ReservationServiceImpl;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -42,4 +44,11 @@ public class ReservationController {
         reservationService.deleteReservation(reservationId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/getAllReservations")
+    public ResponseEntity<List<ReservationEntity>> getAllReservations(){
+        List<ReservationEntity> getAllReservation = reservationService.getAllReservation();
+        return new ResponseEntity<>(getAllReservation, HttpStatus.OK);
+    }
+
 }
