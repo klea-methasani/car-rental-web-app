@@ -3,6 +3,7 @@ package com.sda.carrental.service.serviceImpl;
 import com.sda.carrental.exceptions.CustomerNotFoundException;
 import com.sda.carrental.models.BranchEntity;
 import com.sda.carrental.models.CarEntity;
+import com.sda.carrental.models.Image;
 import com.sda.carrental.models.enums.CarStatus;
 import com.sda.carrental.repository.BranchRepository;
 import com.sda.carrental.repository.CarRepository;
@@ -23,6 +24,8 @@ public class CarServiceImpl implements CarServiceInterface {
     @Autowired
     BranchRepository branchRepository;
 
+    @Autowired ImageService imageService;
+
     @Override
     public CarEntity createCar(CarEntity car,Integer branchId) {
         car.setStatus(CarStatus.AVAILABLE);
@@ -32,7 +35,7 @@ public class CarServiceImpl implements CarServiceInterface {
         }
         car.setBranchEntity(branchEntity.get());
         car.setReservationEntities(car.getReservationEntities());
-        car.setImage(car.getImage());
+       setCarDocumentImage(car);
         return carRepository.save(car);
     }
 
@@ -69,4 +72,13 @@ public class CarServiceImpl implements CarServiceInterface {
         return branchRepository.findById(branchId).map(BranchEntity::getCarEntities)
                 .orElseThrow(() -> new EntityNotFoundException("Car not found"));
     }
+
+
+    private void setCarDocumentImage(CarEntity car) {
+        Image image = car.getImage();
+        if (image != null) {
+            image.setUrl(imageService.generateImageAbsolutePath());
+        }
+    }
+
 }
