@@ -1,4 +1,5 @@
 package com.sda.carrental.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,13 +24,16 @@ public class ReservationEntity {
     private Date start_date;
 
     private Date end_date;
- private double amount;
+    private Integer amount;
+
+    private String reservedBy;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="costumer_id", nullable = false)
+    @JoinColumn(name="costumer_id")
     private CustomerEntity customerEntity;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="car_id", nullable = false)
+    @JoinColumn(name="car_id", nullable = true)
+    @JsonIgnore
     private CarEntity carEntity;
 
     private Integer pickup_branch_id;  // mos harro FK per pickup & return

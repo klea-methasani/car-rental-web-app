@@ -4,6 +4,7 @@ import com.sda.carrental.exceptions.BranchNotFoundException;
 import com.sda.carrental.exceptions.CustomerNotFoundException;
 import com.sda.carrental.exceptions.RentalNotFoundException;
 import com.sda.carrental.models.BranchEntity;
+import com.sda.carrental.models.CarEntity;
 import com.sda.carrental.models.CustomerEntity;
 import com.sda.carrental.models.RentalEntity;
 import com.sda.carrental.repository.BranchRepository;
@@ -29,14 +30,20 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
     @Autowired
     RentalRepository rentalRepository;
 
+
     @Override
-    public CustomerEntity createCustomer(CustomerEntity customer) {
+    public CustomerEntity createCustomer(CustomerEntity customer,Long branchId) {
+        Optional<BranchEntity> branchEntity = branchRepository.findById(Math.toIntExact(branchId));
+        if (branchEntity.isEmpty()) {
+            throw new RuntimeException("Branch with provided ID does not exist");
+        }
+        customer.setBranchEntity(branchEntity.get());
         return customerRepository.save(customer);
     }
 
     @Override
     public Optional<CustomerEntity> getCustomer(Integer customerId) {
-        return Optional.ofNullable(customerRepository.findById(customerId)).orElseThrow(() -> new CustomerNotFoundException("customer not found with this :" + customerId));
+        return Optional.of(customerRepository.findById(customerId)).orElseThrow(() -> new CustomerNotFoundException("customer not found with this :" + customerId));
 
     }
 

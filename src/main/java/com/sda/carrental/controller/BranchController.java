@@ -26,9 +26,9 @@ public class BranchController {
     @Autowired
     private BranchServiceImpl branchService;
 
-    @PostMapping("/createBranches")
-    public ResponseEntity<BranchEntity> createBranches(@RequestBody BranchEntity branch) {
-        BranchEntity createBranch = branchService.createBranch(branch);
+    @PostMapping("/createBranches/{rental_id}")
+    public ResponseEntity<BranchEntity> createBranches(@RequestBody BranchEntity branch,@PathVariable Long rental_id) {
+        BranchEntity createBranch = branchService.createBranch(branch,rental_id);
         return new ResponseEntity<>(createBranch, HttpStatus.CREATED);
     }
 

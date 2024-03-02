@@ -25,7 +25,6 @@ public class RevenueEntity {
     @Column(name="revenue_amount")
     private Integer revenue_amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="branch_id", nullable = false)
+   @OneToOne(fetch = FetchType.EAGER)
     private BranchEntity branchEntity;
 }

@@ -18,7 +18,7 @@ public class RentalServiceImpl implements RentalServiceInterface {
 
     @Override
     public RentalEntity createRental(RentalEntity rental) {
-        rental.setBranchEntities(rental.getBranchEntities());
+//        rental.setBranchEntities(rental.getBranchEntities());
         return rentalRepository.save(rental);
     }
 

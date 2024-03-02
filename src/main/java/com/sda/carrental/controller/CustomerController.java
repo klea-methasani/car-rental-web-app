@@ -21,9 +21,9 @@ public class CustomerController {
     @Autowired
     private CustomerServiceImpl customerService;
 
-    @PostMapping("/createCustomer")
-    public ResponseEntity<CustomerEntity> createCustomers(@RequestBody CustomerEntity customer){
-        CustomerEntity createCustomer = customerService.createCustomer(customer);
+    @PostMapping("/createCustomer/{branchId}")
+    public ResponseEntity<CustomerEntity> createCustomers(@RequestBody CustomerEntity customer,@PathVariable Long branchId){
+        CustomerEntity createCustomer = customerService.createCustomer(customer,branchId);
         return new ResponseEntity<>(createCustomer, HttpStatus.CREATED);}
 
     @GetMapping("/getCustomerById/{customerId}")

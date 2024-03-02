@@ -1,6 +1,7 @@
 package com.sda.carrental.controller;
 
 import com.sda.carrental.models.CarEntity;
+import com.sda.carrental.models.enums.CarStatus;
 import com.sda.carrental.service.serviceImpl.CarServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class CarController {
     private CarServiceImpl carService;
 
     @PostMapping("/addCar")
-    public ResponseEntity<CarEntity> addCar(@RequestBody CarEntity car) {
-        CarEntity createBranch = carService.createCar(car);
-        return new ResponseEntity<>(createBranch, HttpStatus.CREATED);
+    public ResponseEntity<CarEntity> addCar(@RequestBody CarEntity car,@PathVariable Long branchId) {
+        CarEntity createCar = carService.createCar(car,branchId);
+        return new ResponseEntity<>(createCar, HttpStatus.CREATED);
     }
 
     @GetMapping("/getCarById/{carId}")

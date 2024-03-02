@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ReservationServiceInterface {
 
-    ReservationEntity createReservation(ReservationEntity reservation);
+    public ReservationEntity createReservation(ReservationEntity reservation,Long carId,Long userId);
 
     Optional<ReservationEntity> getReservation(Integer reservationId);
 

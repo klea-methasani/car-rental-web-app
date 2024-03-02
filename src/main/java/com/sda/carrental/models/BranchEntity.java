@@ -31,8 +31,8 @@ public class BranchEntity {
     @JoinColumn(name="rental_id")
     private RentalEntity rentalEntity;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
-    private List<RevenueEntity> revenueEntities;
+    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
+    private RevenueEntity revenueEntities;
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER ,mappedBy = "branchEntity")
     private List<CarEntity> carEntities;

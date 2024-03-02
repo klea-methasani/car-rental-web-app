@@ -3,6 +3,7 @@ package com.sda.carrental.service.serviceImpl;
 import com.sda.carrental.exceptions.CustomerNotFoundException;
 import com.sda.carrental.models.BranchEntity;
 import com.sda.carrental.models.CarEntity;
+import com.sda.carrental.models.enums.CarStatus;
 import com.sda.carrental.repository.BranchRepository;
 import com.sda.carrental.repository.CarRepository;
 import com.sda.carrental.service.CarServiceInterface;
@@ -23,8 +24,14 @@ public class CarServiceImpl implements CarServiceInterface {
     BranchRepository branchRepository;
 
     @Override
-    public CarEntity createCar(CarEntity car) {
-        car.setBranchEntity(car.getBranchEntity());
+    public CarEntity createCar(CarEntity car,Long branchId) {
+        car.setStatus(CarStatus.AVAILABLE);
+        Optional<BranchEntity> branchEntity = branchRepository.findById(Math.toIntExact(branchId));
+        if (branchEntity.isEmpty()) {
+            throw new RuntimeException("Branch with provided ID does not exist");
+        }
+        car.setBranchEntity(branchEntity.get());
+        car.setReservationEntities(car.getReservationEntities());
         return carRepository.save(car);
     }
 

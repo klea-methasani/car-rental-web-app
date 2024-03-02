@@ -19,9 +19,9 @@ public class ReservationController {
     @Autowired
     private ReservationServiceImpl reservationService;
 
-    @PostMapping("/createReservation")
-    public ResponseEntity<ReservationEntity> createReservations(@RequestBody ReservationEntity reservation){
-        ReservationEntity createReservation = reservationService.createReservation(reservation);
+    @PostMapping("/createReservation/car/{carId}/user/{userId}")
+    public ResponseEntity<ReservationEntity> createReservations(@RequestBody ReservationEntity reservation,@PathVariable Long carId,@PathVariable Long userId){
+        ReservationEntity createReservation = reservationService.createReservation(reservation,carId,userId);
         return new ResponseEntity<>(createReservation, HttpStatus.CREATED);
     }
 

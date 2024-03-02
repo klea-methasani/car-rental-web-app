@@ -24,8 +24,12 @@ public class BranchServiceImpl implements BranchServiceInterface {
 
 
     @Override
-    public BranchEntity createBranch(BranchEntity branch) {
-        branch.setCustomerEntities(branch.getCustomerEntities());
+    public BranchEntity createBranch(BranchEntity branch, Long rentalId) {
+        RentalEntity rental = rentalRepository.findById(Math.toIntExact(rentalId))
+                .orElseThrow(() -> new EntityNotFoundException("Rental not found with ID: " + rentalId));
+
+        branch.setRentalEntity(rental);
+        rental.getBranchEntities().add(branch);
         return branchRepository.save(branch);
     }
 

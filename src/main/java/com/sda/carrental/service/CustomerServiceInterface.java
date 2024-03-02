@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CustomerServiceInterface {
 
-    CustomerEntity createCustomer (CustomerEntity customer) ;
+    public CustomerEntity createCustomer(CustomerEntity customer,Long branchId);
     Optional <CustomerEntity> getCustomer(Integer customerId);
 
     CustomerEntity updateCustomer(CustomerEntity customer , Integer customerId);
