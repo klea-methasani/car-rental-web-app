@@ -32,6 +32,7 @@ public class CarServiceImpl implements CarServiceInterface {
         }
         car.setBranchEntity(branchEntity.get());
         car.setReservationEntities(car.getReservationEntities());
+        car.setImage(car.getImage());
         return carRepository.save(car);
     }
 
