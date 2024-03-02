@@ -27,7 +27,7 @@ public class BranchEntity {
     private String city;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rental_id")
 
     private RentalEntity rentalEntity;

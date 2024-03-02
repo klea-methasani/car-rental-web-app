@@ -39,7 +39,7 @@ public class CustomerEntity {
     private RentalEntity rentalEntity;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="branch_id")
     private BranchEntity branchEntity;
 }
