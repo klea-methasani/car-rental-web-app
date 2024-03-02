@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface BranchServiceInterface {
 
     public BranchEntity createBranch(BranchEntity branch, Long rentalId);
+
     Optional<BranchEntity> getBranch(Integer branchId);
 
     BranchEntity updateBranch(BranchEntity branch, Integer branchId);

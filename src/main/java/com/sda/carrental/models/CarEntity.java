@@ -46,4 +46,8 @@ public class CarEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="branch_id")
     private BranchEntity branchEntity;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
 }
