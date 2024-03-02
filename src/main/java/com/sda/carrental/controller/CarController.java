@@ -27,8 +27,8 @@ public class CarController {
     @Autowired
     private CarServiceImpl carService;
 
-    @PostMapping("/addCar")
-    public ResponseEntity<CarEntity> addCar(@RequestBody CarEntity car,@PathVariable Long branchId) {
+    @PostMapping("/addCar/{branchId}")
+    public ResponseEntity<CarEntity> addCar(@RequestBody CarEntity car,@PathVariable Integer branchId) {
         CarEntity createCar = carService.createCar(car,branchId);
         return new ResponseEntity<>(createCar, HttpStatus.CREATED);
     }

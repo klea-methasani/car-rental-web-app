@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CarServiceInterface {
 
-    CarEntity createCar(CarEntity customer, Long branchId);
+    CarEntity createCar(CarEntity customer, Integer branchId);
 
     Optional<CarEntity> getCar(Integer customerId);
 

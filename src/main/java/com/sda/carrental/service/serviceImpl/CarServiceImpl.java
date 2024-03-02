@@ -24,9 +24,9 @@ public class CarServiceImpl implements CarServiceInterface {
     BranchRepository branchRepository;
 
     @Override
-    public CarEntity createCar(CarEntity car,Long branchId) {
+    public CarEntity createCar(CarEntity car,Integer branchId) {
         car.setStatus(CarStatus.AVAILABLE);
-        Optional<BranchEntity> branchEntity = branchRepository.findById(Math.toIntExact(branchId));
+        Optional<BranchEntity> branchEntity = branchRepository.findById(branchId);
         if (branchEntity.isEmpty()) {
             throw new RuntimeException("Branch with provided ID does not exist");
         }
