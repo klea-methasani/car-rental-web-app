@@ -40,6 +40,7 @@ public class ReservationEntity {
     private String reservedBy;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "costumer_id")
+    @JsonIgnore
     private CustomerEntity customerEntity;
 
     @ManyToOne(fetch = FetchType.EAGER)
