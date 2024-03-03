@@ -50,7 +50,7 @@ public class ReservationServiceImpl implements ReservationServiceInterface {
             carEntity.setStatus(CarStatus.BOOKED); // Update the status of the car
             reservation.setReservedBy(userEntity.get().getFirstName());
             reservation.setCarEntity(carEntity);
-
+            reservation.setCustomerEntity(userEntity.get());
             reservation.setBooking_date(new Date()); // Assuming this sets the current date as booking date
             Integer daysOfBooking = (int)((reservation.getEnd_date().getTime() - reservation.getStart_date().getTime()) / (1000 * 60 * 60 * 24));
             Integer overallPrice = carEntity.getRental_per_day() * daysOfBooking;
